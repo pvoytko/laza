@@ -12,7 +12,6 @@ def getSoupHtmlByUrl(url):
     return BeautifulSoup(resp.content, 'html.parser')
 
 page = 0
-print "["
 while True:
 
     # Получение с заглавной страницы очереднойп орции постов
@@ -54,9 +53,7 @@ while True:
         }
 
         import simplejson
-        if p != posts[0]:
-            print ","
-        print simplejson.dumps(json_obj, ensure_ascii=False),
+        print simplejson.dumps(json_obj, ensure_ascii=False)
 
     # Критерий выхода - в выдаче менее 12 постов (последняя страница содержит не 12 а менее постов,
     # а за ней идет несколько путых страниц, а потом код ошибки)
@@ -64,6 +61,3 @@ while True:
     if posts_count != 12:
         print
         break
-
-print "]"
-
